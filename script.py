@@ -11,6 +11,8 @@ endereco_api = "http://ip-api.com/json/"
 file = open('/home/rafael/Downloads/ips.txt')
 save = open('/home/rafael/Downloads/salveip.txt','w')
 ips = []
+save1 = open('/home/rafael/Downloads/salveip1.txt','w')
+ips1 = []
 lista_ip = file.read().replace('\'','').split('\n')
 file.close()
 
@@ -26,12 +28,15 @@ for ip in lista_ip:
 			paises[retorno] += 1
 		else:
 			paises.update({retorno:1})
-	sleep(60/150) #garante no maximo 150 execucoes por minuto
+	sleep(60.0/150) #garante no maximo 150 execucoes por minuto
 
 #contabilizando os paises
 print "Exibindo quantidade de ips por pais"
 for p in paises:
+	ips.append(ip1)
 	print(p+" : "+paises[p])
+save1.writelines(ips1)
+save1.close()
 save.writelines(ips)
 save.close()
 
